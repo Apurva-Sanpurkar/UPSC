@@ -25,43 +25,39 @@ export const collegeTimetable: TimetableSlot[] = [
   { id: uid(), dayOfWeek:'Fri', startTime:'17:00', endTime:'18:00', slotType:'class', label:'IOT 2205' },
 ];
 
-// ===== DEFAULT WEEKDAY TEMPLATE =====
+// ===== DEFAULT WEEKDAY TEMPLATE (Tailored for 12pm-6pm College & 4hr Commute) =====
 const defaultWeekday: Omit<TemplateBlock,'id'>[] = [
-  { templateName:'default', dayType:'weekday', startTime:'06:00', endTime:'06:30', category:'routine', label:'Wake, freshen, water', sortOrder:1 },
-  { templateName:'default', dayType:'weekday', startTime:'06:30', endTime:'07:30', category:'upsc', label:'UPSC Deep Study (Morning)', sortOrder:2 },
-  { templateName:'default', dayType:'weekday', startTime:'07:30', endTime:'08:45', category:'travel', label:'Breakfast & Travel to college', sortOrder:3 },
-  { templateName:'default', dayType:'weekday', startTime:'08:45', endTime:'16:20', category:'college', label:'College & Current Affairs', sortOrder:4 },
-  { templateName:'default', dayType:'weekday', startTime:'16:20', endTime:'17:20', category:'travel', label:'Travel home', sortOrder:5 },
-  { templateName:'default', dayType:'weekday', startTime:'17:20', endTime:'18:30', category:'routine', label:'Rest & Freshen', sortOrder:6 },
-  { templateName:'default', dayType:'weekday', startTime:'18:30', endTime:'20:00', category:'college', label:'Internship (Work from home)', sortOrder:7 },
-  { templateName:'default', dayType:'weekday', startTime:'20:00', endTime:'20:30', category:'meal', label:'Dinner', sortOrder:8 },
-  { templateName:'default', dayType:'weekday', startTime:'20:30', endTime:'22:00', category:'upsc', label:'UPSC Deep Study (Evening)', sortOrder:9 },
-  { templateName:'default', dayType:'weekday', startTime:'22:00', endTime:'23:00', category:'academic', label:'Academics', sortOrder:10 },
-  { templateName:'default', dayType:'weekday', startTime:'23:00', endTime:'23:30', category:'review', label:'Review & Plan', sortOrder:11 },
+  { templateName:'default', dayType:'weekday', startTime:'06:30', endTime:'07:00', category:'routine', label:'Wake, freshen, water', sortOrder:1 },
+  { templateName:'default', dayType:'weekday', startTime:'07:00', endTime:'09:00', category:'upsc', label:'UPSC Deep Study & Answer Writing', sortOrder:2 },
+  { templateName:'default', dayType:'weekday', startTime:'09:00', endTime:'10:00', category:'routine', label:'Breakfast, Shower & Get Ready', sortOrder:3 },
+  { templateName:'default', dayType:'weekday', startTime:'10:00', endTime:'12:00', category:'travel', label:'🚌 Bus Transit (2 hrs) -> Audiobooks / YouTube Study / Current Affairs', sortOrder:4 },
+  { templateName:'default', dayType:'weekday', startTime:'12:00', endTime:'18:00', category:'college', label:'College Lectures & Labs (VIT Kondhwa AI & DS)', sortOrder:5 },
+  { templateName:'default', dayType:'weekday', startTime:'18:00', endTime:'20:00', category:'travel', label:'🚌 Bus Transit Home (2 hrs) -> Revision Podcasts / Relax & Music', sortOrder:6 },
+  { templateName:'default', dayType:'weekday', startTime:'20:00', endTime:'21:00', category:'meal', label:'Dinner & Rest with Family', sortOrder:7 },
+  { templateName:'default', dayType:'weekday', startTime:'21:00', endTime:'22:30', category:'academic', label:'AI & DS Academic Study / Coding Practice', sortOrder:8 },
+  { templateName:'default', dayType:'weekday', startTime:'22:30', endTime:'23:00', category:'review', label:'Extra Activities & Daily Growth Review', sortOrder:9 },
 ];
 
 const defaultSaturday: Omit<TemplateBlock,'id'>[] = [
-  { templateName:'default', dayType:'saturday', startTime:'06:00', endTime:'07:30', category:'upsc', label:'UPSC Deep Study (Morning)', sortOrder:1 },
-  { templateName:'default', dayType:'saturday', startTime:'07:30', endTime:'08:45', category:'travel', label:'Breakfast & Travel to college', sortOrder:2 },
-  { templateName:'default', dayType:'saturday', startTime:'08:45', endTime:'16:20', category:'college', label:'College (Free periods)', sortOrder:3 },
-  { templateName:'default', dayType:'saturday', startTime:'16:20', endTime:'17:20', category:'travel', label:'Travel home', sortOrder:4 },
-  { templateName:'default', dayType:'saturday', startTime:'17:20', endTime:'18:00', category:'routine', label:'Rest', sortOrder:5 },
-  { templateName:'default', dayType:'saturday', startTime:'18:00', endTime:'20:00', category:'content', label:'Extra Activities (Hobbies/Chill)', sortOrder:6 },
-  { templateName:'default', dayType:'saturday', startTime:'20:00', endTime:'20:45', category:'meal', label:'Dinner', sortOrder:7 },
-  { templateName:'default', dayType:'saturday', startTime:'20:45', endTime:'22:30', category:'upsc', label:'UPSC Deep Study', sortOrder:8 },
-  { templateName:'default', dayType:'saturday', startTime:'22:30', endTime:'23:30', category:'review', label:'Content Org & Plan', sortOrder:9 },
+  { templateName:'default', dayType:'saturday', startTime:'07:00', endTime:'09:30', category:'upsc', label:'UPSC Deep Study (Morning Session)', sortOrder:1 },
+  { templateName:'default', dayType:'saturday', startTime:'09:30', endTime:'10:30', category:'meal', label:'Breakfast & Relax', sortOrder:2 },
+  { templateName:'default', dayType:'saturday', startTime:'10:30', endTime:'13:30', category:'academic', label:'AI & DS Coding / Hackathon / Project Work', sortOrder:3 },
+  { templateName:'default', dayType:'saturday', startTime:'13:30', endTime:'15:00', category:'meal', label:'Lunch & Afternoon Rest', sortOrder:4 },
+  { templateName:'default', dayType:'saturday', startTime:'15:00', endTime:'18:00', category:'content', label:'Extra Activities / Hobbies / Outings with Friends', sortOrder:5 },
+  { templateName:'default', dayType:'saturday', startTime:'18:00', endTime:'20:00', category:'upsc', label:'UPSC Optional Subject Study', sortOrder:6 },
+  { templateName:'default', dayType:'saturday', startTime:'20:00', endTime:'21:00', category:'meal', label:'Dinner', sortOrder:7 },
+  { templateName:'default', dayType:'saturday', startTime:'21:00', endTime:'22:30', category:'review', label:'Weekly Planning & Growth Reflections', sortOrder:8 },
 ];
 
 const defaultSunday: Omit<TemplateBlock,'id'>[] = [
-  { templateName:'default', dayType:'sunday', startTime:'06:00', endTime:'09:00', category:'upsc', label:'UPSC Answer Writing / Optional', sortOrder:1 },
-  { templateName:'default', dayType:'sunday', startTime:'09:00', endTime:'10:00', category:'meal', label:'Breakfast', sortOrder:2 },
-  { templateName:'default', dayType:'sunday', startTime:'10:00', endTime:'13:00', category:'content', label:'Extra Activities (Hobbies/Outing)', sortOrder:3 },
-  { templateName:'default', dayType:'sunday', startTime:'13:00', endTime:'14:00', category:'meal', label:'Lunch', sortOrder:4 },
-  { templateName:'default', dayType:'sunday', startTime:'14:00', endTime:'17:00', category:'academic', label:'Academic Deep Study', sortOrder:5 },
-  { templateName:'default', dayType:'sunday', startTime:'17:00', endTime:'20:00', category:'content', label:'Extra Activities (Relaxation)', sortOrder:6 },
-  { templateName:'default', dayType:'sunday', startTime:'20:00', endTime:'20:45', category:'meal', label:'Dinner', sortOrder:7 },
-  { templateName:'default', dayType:'sunday', startTime:'20:45', endTime:'22:30', category:'review', label:'Weekly Review', sortOrder:8 },
-  { templateName:'default', dayType:'sunday', startTime:'22:30', endTime:'23:30', category:'rest', label:'Rest', sortOrder:9 },
+  { templateName:'default', dayType:'sunday', startTime:'07:00', endTime:'10:00', category:'upsc', label:'UPSC Mock Test & Answer Writing Practice', sortOrder:1 },
+  { templateName:'default', dayType:'sunday', startTime:'10:00', endTime:'11:00', category:'meal', label:'Sunday Brunch & Relax', sortOrder:2 },
+  { templateName:'default', dayType:'sunday', startTime:'11:00', endTime:'14:00', category:'content', label:'Extra Activities / Hobbies / Personal Life', sortOrder:3 },
+  { templateName:'default', dayType:'sunday', startTime:'14:00', endTime:'16:00', category:'meal', label:'Lunch & Rest', sortOrder:4 },
+  { templateName:'default', dayType:'sunday', startTime:'16:00', endTime:'19:00', category:'academic', label:'Academic Revision & Upcoming Week Prep', sortOrder:5 },
+  { templateName:'default', dayType:'sunday', startTime:'19:00', endTime:'20:30', category:'content', label:'Family Time / Leisure / Reading', sortOrder:6 },
+  { templateName:'default', dayType:'sunday', startTime:'20:30', endTime:'21:30', category:'meal', label:'Dinner', sortOrder:7 },
+  { templateName:'default', dayType:'sunday', startTime:'21:30', endTime:'22:30', category:'review', label:'Set Next Week Goals & Sleep Early', sortOrder:8 },
 ];
 
 export const templateBlocks: TemplateBlock[] = [
@@ -72,10 +68,11 @@ export const templateBlocks: TemplateBlock[] = [
 
 // ===== ACADEMIC SUBJECTS =====
 export const academicSubjects: Subject[] = [
-  { id:'toc', type:'academic', name:'Theory of Computation', examDate:'2026-11-17', totalUnits:5 },
-  { id:'cn', type:'academic', name:'Computer Networks', examDate:'2026-11-19', totalUnits:5 },
-  { id:'daa', type:'academic', name:'Design & Analysis of Algorithms', examDate:'2026-11-24', totalUnits:5 },
-  { id:'fm', type:'academic', name:'Financial Mathematics', examDate:'2026-11-26', totalUnits:5 },
+  { id: 'ai', type: 'academic', name: 'Artificial Intelligence', examDate: '2026-11-17', totalUnits: 5 },
+  { id: 'ml', type: 'academic', name: 'Machine Learning', examDate: '2026-11-19', totalUnits: 5 },
+  { id: 'iot', type: 'academic', name: 'Internet of Things (IoT)', examDate: '2026-11-24', totalUnits: 5 },
+  { id: 'sp', type: 'academic', name: 'Statistical & System Programming', examDate: '2026-11-26', totalUnits: 5 },
+  { id: 'dt', type: 'academic', name: 'Design Thinking', examDate: '2026-11-28', totalUnits: 5 },
 ];
 
 // ===== UPSC GS SUBJECTS =====

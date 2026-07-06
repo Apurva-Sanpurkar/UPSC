@@ -86,6 +86,7 @@ exports.tasks = (0, pg_core_1.pgTable)('tasks', {
     category: (0, pg_core_1.text)('category').notNull(),
     status: (0, pg_core_1.text)('status').notNull(), // 'pending','done'
     priority: (0, pg_core_1.text)('priority').notNull(),
+    deadline: (0, pg_core_1.timestamp)('deadline'),
 });
 exports.streaks = (0, pg_core_1.pgTable)('streaks', {
     id: (0, pg_core_1.uuid)('id').primaryKey().defaultRandom(),

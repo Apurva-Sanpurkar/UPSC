@@ -82,12 +82,14 @@ export default function SettingsPage() {
               <input type="text" value="CSE 2027 (First Attempt)" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
             </div>
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>College</label>
-              <input type="text" value="College Student" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
+              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>College & Department</label>
+              <input type="text" value="VIT Kondhwa Campus — B.Tech AI & DS, 3rd Year" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 13, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit', fontWeight: 600 }} />
             </div>
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>Date of Birth</label>
-              <input type="text" value="" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
+              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                Date of Birth <span style={{ fontSize: 11, color: '#EC4899', background: '#FDF2F8', padding: '1px 6px', borderRadius: 6 }}>🎉 20 Oct</span>
+              </label>
+              <input type="text" value="20 October 2005" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit', fontWeight: 600 }} />
             </div>
           </div>
         </div>

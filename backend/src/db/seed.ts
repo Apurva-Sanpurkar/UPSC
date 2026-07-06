@@ -16,48 +16,45 @@ const upscSubjects = [
 ];
 
 const academicSubjects = [
-  { name: 'Theory of Computation', examDate: '2026-11-17', totalUnits: 5, type: 'academic' },
-  { name: 'Computer Networks', examDate: '2026-11-19', totalUnits: 5, type: 'academic' },
-  { name: 'Design & Analysis of Algorithms', examDate: '2026-11-24', totalUnits: 5, type: 'academic' },
-  { name: 'Financial Mathematics', examDate: '2026-11-26', totalUnits: 5, type: 'academic' },
+  { name: 'Artificial Intelligence', examDate: '2026-11-18', totalUnits: 5, type: 'academic' },
+  { name: 'Machine Learning', examDate: '2026-11-20', totalUnits: 5, type: 'academic' },
+  { name: 'Internet of Things', examDate: '2026-11-24', totalUnits: 5, type: 'academic' },
+  { name: 'System Programming', examDate: '2026-11-26', totalUnits: 5, type: 'academic' },
+  { name: 'Design Thinking', examDate: '2026-11-28', totalUnits: 5, type: 'academic' },
 ];
 
 const weekdayBlocks = [
-  { start: '06:00', end: '06:30', category: 'routine', label: 'Wake, freshen, water' },
-  { start: '06:30', end: '07:30', category: 'upsc', label: 'UPSC Deep Study (Morning)' },
-  { start: '07:30', end: '08:45', category: 'travel', label: 'Breakfast & Travel to college' },
-  { start: '08:45', end: '16:20', category: 'college', label: 'College & Current Affairs' },
-  { start: '16:20', end: '17:20', category: 'travel', label: 'Travel home' },
-  { start: '17:20', end: '18:30', category: 'routine', label: 'Rest & Freshen' },
-  { start: '18:30', end: '20:00', category: 'college', label: 'Internship (Work from home)' },
-  { start: '20:00', end: '20:30', category: 'meal', label: 'Dinner' },
-  { start: '20:30', end: '22:00', category: 'upsc', label: 'UPSC Deep Study (Evening)' },
-  { start: '22:00', end: '23:00', category: 'academic', label: 'Academics' },
-  { start: '23:00', end: '23:30', category: 'review', label: 'Review & Plan' },
+  { start: '06:30', end: '07:00', category: 'routine', label: 'Wake, freshen, water' },
+  { start: '07:00', end: '09:00', category: 'upsc', label: 'UPSC Deep Study & Answer Writing' },
+  { start: '09:00', end: '10:00', category: 'routine', label: 'Breakfast, Shower & Get Ready' },
+  { start: '10:00', end: '12:00', category: 'travel', label: '🚌 Bus Transit (2 hrs) -> Audiobooks / YouTube Study / Current Affairs' },
+  { start: '12:00', end: '18:00', category: 'college', label: 'College Lectures & Labs (VIT Kondhwa AI & DS)' },
+  { start: '18:00', end: '20:00', category: 'travel', label: '🚌 Bus Transit Home (2 hrs) -> Revision Podcasts / Relax & Music' },
+  { start: '20:00', end: '21:00', category: 'meal', label: 'Dinner & Rest with Family' },
+  { start: '21:00', end: '22:30', category: 'academic', label: 'AI & DS Academic Study / Coding Practice' },
+  { start: '22:30', end: '23:00', category: 'review', label: 'Extra Activities & Daily Growth Review' },
 ];
 
 const saturdayBlocks = [
-  { start: '06:00', end: '07:30', category: 'upsc', label: 'UPSC Deep Study (Morning)' },
-  { start: '07:30', end: '08:45', category: 'travel', label: 'Breakfast & Travel to college' },
-  { start: '08:45', end: '16:20', category: 'college', label: 'College (Free periods)' },
-  { start: '16:20', end: '17:20', category: 'travel', label: 'Travel home' },
-  { start: '17:20', end: '18:00', category: 'routine', label: 'Rest' },
-  { start: '18:00', end: '20:00', category: 'content', label: 'Extra Activities (Hobbies/Chill)' },
-  { start: '20:00', end: '20:45', category: 'meal', label: 'Dinner' },
-  { start: '20:45', end: '22:30', category: 'upsc', label: 'UPSC Deep Study' },
-  { start: '22:30', end: '23:30', category: 'review', label: 'Content Org & Plan' },
+  { start: '07:00', end: '09:30', category: 'upsc', label: 'UPSC Deep Study (Morning Session)' },
+  { start: '09:30', end: '10:30', category: 'meal', label: 'Breakfast & Relax' },
+  { start: '10:30', end: '13:30', category: 'academic', label: 'AI & DS Coding / Hackathon / Project Work' },
+  { start: '13:30', end: '15:00', category: 'meal', label: 'Lunch & Afternoon Rest' },
+  { start: '15:00', end: '18:00', category: 'content', label: 'Extra Activities / Hobbies / Outings with Friends' },
+  { start: '18:00', end: '20:00', category: 'upsc', label: 'UPSC Optional Subject Study' },
+  { start: '20:00', end: '21:00', category: 'meal', label: 'Dinner' },
+  { start: '21:00', end: '22:30', category: 'review', label: 'Weekly Planning & Growth Reflections' },
 ];
 
 const sundayBlocks = [
-  { start: '06:00', end: '09:00', category: 'upsc', label: 'UPSC Answer Writing / Optional' },
-  { start: '09:00', end: '10:00', category: 'meal', label: 'Breakfast' },
-  { start: '10:00', end: '13:00', category: 'content', label: 'Extra Activities (Hobbies/Outing)' },
-  { start: '13:00', end: '14:00', category: 'meal', label: 'Lunch' },
-  { start: '14:00', end: '17:00', category: 'academic', label: 'Academic Deep Study' },
-  { start: '17:00', end: '20:00', category: 'content', label: 'Extra Activities (Relaxation)' },
-  { start: '20:00', end: '20:45', category: 'meal', label: 'Dinner' },
-  { start: '20:45', end: '22:30', category: 'review', label: 'Weekly Review' },
-  { start: '22:30', end: '23:30', category: 'rest', label: 'Rest' },
+  { start: '07:00', end: '10:00', category: 'upsc', label: 'UPSC Mock Test & Answer Writing Practice' },
+  { start: '10:00', end: '11:00', category: 'meal', label: 'Sunday Brunch & Relax' },
+  { start: '11:00', end: '14:00', category: 'content', label: 'Extra Activities / Hobbies / Personal Life' },
+  { start: '14:00', end: '16:00', category: 'meal', label: 'Lunch & Rest' },
+  { start: '16:00', end: '19:00', category: 'academic', label: 'Academic Revision & Upcoming Week Prep' },
+  { start: '19:00', end: '20:30', category: 'content', label: 'Family Time / Leisure / Reading' },
+  { start: '20:30', end: '21:30', category: 'meal', label: 'Dinner' },
+  { start: '21:30', end: '22:30', category: 'review', label: 'Set Next Week Goals & Sleep Early' },
 ];
 
 const apurvaTimetable = [
@@ -90,7 +87,7 @@ async function seed() {
     // 1. Users
     const [user] = await db.insert(schema.users).values({
       name: 'Apurva Sanpurkar',
-      dob: '2005-01-01', // Example default
+      dob: '2005-10-20',
       upscAttemptYear: 2027,
       prelimsDate: '2027-05-23',
       mainsDate: '2027-08-20',
@@ -99,9 +96,9 @@ async function seed() {
     // 2. Settings
     await db.insert(schema.settings).values({
       userId: user.id,
-      wakeTime: '06:00',
-      sleepTime: '23:30',
-      travelMinutesEachWay: 60,
+      wakeTime: '06:30',
+      sleepTime: '23:00',
+      travelMinutesEachWay: 120,
       optionalSubjectName: 'Public Administration',
     });
 

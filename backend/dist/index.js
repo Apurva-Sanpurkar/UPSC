@@ -52,12 +52,12 @@ const PIN = '2413';
 // Auth Route
 app.post('/api/auth/login', (req, res) => {
     const { pin } = req.body;
-    if (pin === PIN) {
-        const token = jsonwebtoken_1.default.sign({ user: 'sai' }, JWT_SECRET, { expiresIn: '7d' });
+    if (pin === 'ILoveyouSai') {
+        const token = jsonwebtoken_1.default.sign({ user: 'apurva' }, JWT_SECRET, { expiresIn: '7d' });
         res.json({ token });
     }
     else {
-        res.status(401).json({ error: 'Invalid PIN' });
+        res.status(401).json({ error: 'Invalid Password' });
     }
 });
 // Middleware
