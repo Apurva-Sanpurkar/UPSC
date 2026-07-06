@@ -252,7 +252,7 @@ export default function Dashboard() {
               {[
                 { key: 'upsc', label: 'UPSC Study', icon: BookOpen, color: 'var(--color-primary)' },
                 { key: 'academic', label: 'Academics', icon: GraduationCap, color: '#F97316' },
-                { key: 'content', label: 'Content', icon: Video, color: '#8B5CF6' },
+                { key: 'content', label: 'Extra Activities', icon: Target, color: '#8B5CF6' },
               ].map(({ key, label, icon: Icon, color }) => {
                 const streak = streaks[key];
                 return (
