@@ -10,8 +10,8 @@ export default function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
         <button
           onClick={onMenuClick}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'none' }}
-          className="mobile-menu-btn"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
+          className="md:hidden"
         >
           <Menu size={24} color="#374151" />
         </button>
@@ -51,10 +51,10 @@ export default function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
         </button>
         <div style={{
           width: 36, height: 36, borderRadius: '50%',
-          background: 'linear-gradient(135deg, #16A34A, #22C55E)',
+          background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-light))',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           color: 'white', fontWeight: 700, fontSize: 13, cursor: 'pointer'
-        }}>SR</div>
+        }}>AS</div>
       </div>
     </div>
   );

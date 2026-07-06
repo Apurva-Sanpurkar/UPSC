@@ -107,7 +107,7 @@ export default function Dashboard() {
         )}
       </motion.div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 20, alignItems: 'start' }}>
+      <div className="dashboard-grid">
         {/* Left Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           

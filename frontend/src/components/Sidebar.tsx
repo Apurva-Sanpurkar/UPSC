@@ -38,7 +38,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
             <div style={{ fontSize: 11, color: '#6B7280', fontWeight: 500 }}>Command Center</div>
           </div>
         </div>
-        <button onClick={onClose} className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'none' }}>
+        <button onClick={onClose} className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
           <X size={20} color="#6B7280" />
         </button>
       </div>
