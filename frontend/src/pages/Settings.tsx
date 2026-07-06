@@ -75,7 +75,7 @@ export default function SettingsPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>Name</label>
-              <input type="text" value="Sai Ranadive" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
+              <input type="text" value="Apurva Sanpurkar" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
             </div>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>UPSC Attempt</label>
@@ -83,11 +83,11 @@ export default function SettingsPage() {
             </div>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>College</label>
-              <input type="text" value="SIT Pune — B.Tech CSE, Sem V, Div B" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
+              <input type="text" value="College Student" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
             </div>
             <div>
               <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>Date of Birth</label>
-              <input type="text" value="24 April 2005" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
+              <input type="text" value="" readOnly style={{ width: '100%', padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#F9FAFB', color: '#6B7280', fontFamily: 'inherit' }} />
             </div>
           </div>
         </div>

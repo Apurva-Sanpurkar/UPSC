@@ -91,7 +91,7 @@ export default function Dashboard() {
       {/* Page Header */}
       <motion.div variants={itemVariants} style={{ marginBottom: 28 }}>
         <h1 style={{ fontSize: 28, fontWeight: 800, color: '#111', letterSpacing: '-0.02em' }}>
-          Good {today.getHours() < 12 ? 'Morning' : today.getHours() < 17 ? 'Afternoon' : 'Evening'}, Sai 👋
+          Good {today.getHours() < 12 ? 'Morning' : today.getHours() < 17 ? 'Afternoon' : 'Evening'}, Apurva 👋
         </h1>
         <p style={{ fontSize: 14, color: '#6B7280', marginTop: 4 }}>
           {format(today, 'EEEE, dd MMMM yyyy')} · {activeTemplate === 'exam_sprint' ? '🔴 Exam Sprint Mode' : '🔵 Default Mode'}

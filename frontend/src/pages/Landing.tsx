@@ -60,7 +60,7 @@ export default function Landing() {
           </motion.h1>
 
           <motion.p variants={itemVariants} style={{ fontSize: 'clamp(18px, 2vw, 22px)', color: '#9CA3AF', maxWidth: 600, lineHeight: 1.6, marginBottom: 48 }}>
-            The personal operating system for Sai Ranadive. Merging UPSC 2027 preparation, B.Tech Academics, and Content Creation into one unified, real-time schedule.
+            The personal operating system for Apurva Sanpurkar. Merging UPSC 2027 preparation, Academics, and Extra Activities into one unified, real-time schedule.
           </motion.p>
 
           <motion.div variants={itemVariants} style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 80 }}>
