@@ -13,7 +13,7 @@ export const useAuth = create<AuthState>()(
     (set) => ({
       isAuthenticated: false,
       login: (pin: string) => {
-        if (pin === '2413') {
+        if (pin === 'ILoveyouSai') {
           set({ isAuthenticated: true });
           return true;
         }
