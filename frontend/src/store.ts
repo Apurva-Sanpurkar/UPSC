@@ -30,6 +30,7 @@ interface SessionsState {
   setSessions: (s: StudySession[]) => void;
   updateSession: (id: string, updates: Partial<StudySession>) => void;
   addSession: (s: StudySession) => void;
+  toggleSession: (session: StudySession) => void;
 }
 
 export const useSessions = create<SessionsState>()(
@@ -44,6 +45,35 @@ export const useSessions = create<SessionsState>()(
           ),
         })),
       addSession: (s) => set((state) => ({ sessions: [...state.sessions, s] })),
+      toggleSession: (session) =>
+        set((state) => {
+          const exists = state.sessions.some((s) => s.id === session.id);
+          if (exists) {
+            return {
+              sessions: state.sessions.map((s) =>
+                s.id === session.id
+                  ? {
+                      ...s,
+                      status: s.status === 'done' ? 'pending' : 'done',
+                      actualMinutes: s.status === 'done' ? 0 : s.plannedMinutes,
+                    }
+                  : s
+              ),
+            };
+          } else {
+            const newStatus = session.status === 'done' ? 'pending' : 'done';
+            return {
+              sessions: [
+                ...state.sessions,
+                {
+                  ...session,
+                  status: newStatus,
+                  actualMinutes: newStatus === 'done' ? session.plannedMinutes : 0,
+                },
+              ],
+            };
+          }
+        }),
     }),
     { name: 'mission2027-sessions' }
   )
@@ -142,9 +172,9 @@ export const useStreaks = create<StreakState>()(
   persist(
     (set) => ({
       streaks: {
-        upsc: { category: 'upsc', currentStreak: 0, longestStreak: 0, lastCompletedDate: '' },
-        academic: { category: 'academic', currentStreak: 0, longestStreak: 0, lastCompletedDate: '' },
-        content: { category: 'content', currentStreak: 0, longestStreak: 0, lastCompletedDate: '' },
+        upsc: { category: 'upsc', currentStreak: 0, longestStreak: 0, lastCompletedDate: '2026-07-07' },
+        academic: { category: 'academic', currentStreak: 0, longestStreak: 0, lastCompletedDate: '2026-07-07' },
+        content: { category: 'content', currentStreak: 0, longestStreak: 0, lastCompletedDate: '2026-07-07' },
       },
       updateStreak: (category, streak) =>
         set((state) => ({

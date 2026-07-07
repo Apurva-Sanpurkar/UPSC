@@ -11,7 +11,7 @@ export default function Dashboard() {
   const { prelimsDate, mainsDate } = useSettings();
   const streaks = useStreaks(s => s.streaks);
   const sessions = useSessions(s => s.sessions);
-  const updateSession = useSessions(s => s.updateSession);
+  const toggleSession = useSessions(s => s.toggleSession);
   const tasks = useTasks(s => s.tasks);
   const addTask = useTasks(s => s.addTask);
   const toggleTask = useTasks(s => s.toggleTask);
@@ -37,21 +37,24 @@ export default function Dashboard() {
     .sort((a, b) => daysUntil(a.examDate!) - daysUntil(b.examDate!))[0];
 
   const todaySessions = useMemo(() => {
-    const existing = sessions.filter(s => s.date === todayStr());
-    if (existing.length > 0) return existing;
-    return todayBlocks.map(b => ({
-      id: `session-${b.id}`,
-      date: todayStr(),
-      blockLabel: b.label,
-      subjectId: null,
-      category: b.category,
-      plannedMinutes: minutesDiff(b.startTime, b.endTime),
-      actualMinutes: 0,
-      status: 'pending' as const,
-      notes: '',
-      startTime: b.startTime,
-      endTime: b.endTime,
-    }));
+    return todayBlocks.map(b => {
+      const sessionId = `session-${b.id}-${todayStr()}`;
+      const existing = sessions.find(s => s.id === sessionId || (s.date === todayStr() && s.blockLabel === b.label));
+      if (existing) return existing;
+      return {
+        id: sessionId,
+        date: todayStr(),
+        blockLabel: b.label,
+        subjectId: null,
+        category: b.category,
+        plannedMinutes: minutesDiff(b.startTime, b.endTime),
+        actualMinutes: 0,
+        status: 'pending' as const,
+        notes: '',
+        startTime: b.startTime,
+        endTime: b.endTime,
+      };
+    });
   }, [sessions, todayBlocks]);
 
   const completedCount = todaySessions.filter(s => s.status === 'done').length;
@@ -72,8 +75,8 @@ export default function Dashboard() {
     setShowAddTask(false);
   };
 
-  const handleToggleSession = (id: string, currentStatus: string) => {
-    updateSession(id, { status: currentStatus === 'done' ? 'pending' : 'done', actualMinutes: currentStatus === 'done' ? 0 : undefined });
+  const handleToggleSession = (session: any) => {
+    toggleSession(session);
   };
 
   const containerVariants: any = {
@@ -107,7 +110,7 @@ export default function Dashboard() {
         )}
       </motion.div>
 
-      <div className="dashboard-grid">
+      <div className="grid-layout-2col">
         {/* Left Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           
@@ -132,7 +135,7 @@ export default function Dashboard() {
                 <motion.div
                   key={session.id}
                   initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
-                  onClick={() => handleToggleSession(session.id, session.status)}
+                  onClick={() => handleToggleSession(session)}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px',
                     borderRadius: 12, cursor: 'pointer', transition: 'all 0.2s ease',

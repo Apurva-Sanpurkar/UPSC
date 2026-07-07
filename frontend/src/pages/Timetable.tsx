@@ -3,7 +3,8 @@ import { useState, useMemo } from 'react';
 import { format, addDays, startOfWeek } from 'date-fns';
 import { templateBlocks, collegeTimetable } from '../data/seedData';
 import { getDayType, getActiveTemplate, categoryColor, categoryBg, minutesDiff, getCurrentDate, formatTime12h } from '../utils';
-import { ChevronLeft, ChevronRight, Clock, GraduationCap } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Clock, GraduationCap, CheckCircle2, Circle } from 'lucide-react';
+import { useSessions } from '../store';
 import type { DayType } from '../types';
 
 const DAY_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -12,6 +13,9 @@ export default function Timetable() {
   const [weekOffset, setWeekOffset] = useState(0);
   const [selectedDay, setSelectedDay] = useState(getCurrentDate().getDay() === 0 ? 6 : getCurrentDate().getDay() - 1);
   const [showCollege, setShowCollege] = useState(true);
+
+  const sessions = useSessions(s => s.sessions);
+  const toggleSession = useSessions(s => s.toggleSession);
 
   const weekStart = addDays(startOfWeek(getCurrentDate(), { weekStartsOn: 1 }), weekOffset * 7);
   const days = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
@@ -26,6 +30,28 @@ export default function Timetable() {
       .sort((a, b) => a.sortOrder - b.sortOrder),
     [dayType, template]
   );
+
+  const daySessions = useMemo(() => {
+    const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    return blocks.map(b => {
+      const sessionId = `session-${b.id}-${dateStr}`;
+      const existing = sessions.find(s => s.id === sessionId || (s.date === dateStr && s.blockLabel === b.label));
+      if (existing) return existing;
+      return {
+        id: sessionId,
+        date: dateStr,
+        blockLabel: b.label,
+        subjectId: null,
+        category: b.category,
+        plannedMinutes: minutesDiff(b.startTime, b.endTime),
+        actualMinutes: 0,
+        status: 'pending' as const,
+        notes: '',
+        startTime: b.startTime,
+        endTime: b.endTime,
+      };
+    });
+  }, [sessions, blocks, selectedDate]);
 
   const collegeSlots = useMemo(() =>
     collegeTimetable.filter(s => s.dayOfWeek === dayName),
@@ -79,7 +105,7 @@ export default function Timetable() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: showCollege && dayName !== 'Sun' ? '1fr 340px' : '1fr', gap: 20 }}>
+      <div className={showCollege && dayName !== 'Sun' ? 'grid-layout-2col' : ''} style={!showCollege || dayName === 'Sun' ? { display: 'grid', gridTemplateColumns: '1fr', gap: 20 } : {}}>
         {/* Daily Schedule */}
         <div className="card" style={{ padding: 24 }}>
           <h2 style={{ fontSize: 16, fontWeight: 700, color: '#111', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -96,23 +122,34 @@ export default function Timetable() {
                 </tr>
               </thead>
               <tbody>
-                {blocks.map((block, i) => (
-                  <tr key={block.id} style={{ 
-                    borderBottom: i === blocks.length - 1 ? 'none' : '1px solid #F3F4F6',
-                    background: categoryBg(block.category)
+                {daySessions.map((session, i) => (
+                  <tr key={session.id} 
+                    onClick={() => toggleSession(session)}
+                    style={{ 
+                    borderBottom: i === daySessions.length - 1 ? 'none' : '1px solid #F3F4F6',
+                    background: session.status === 'done' ? 'var(--color-primary-50)' : categoryBg(session.category),
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                    opacity: session.status === 'done' ? 0.75 : 1
                   }}>
                     <td style={{ padding: '12px 16px', fontWeight: 700, color: '#111', whiteSpace: 'nowrap' }}>
-                      {formatTime12h(block.startTime)} – {formatTime12h(block.endTime)}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        {session.status === 'done'
+                          ? <CheckCircle2 size={18} color="var(--color-primary)" />
+                          : <Circle size={18} color="#D1D5DB" />
+                        }
+                        <span>{formatTime12h(session.startTime!)} – {formatTime12h(session.endTime!)}</span>
+                      </div>
                     </td>
                     <td style={{ padding: '12px 16px', color: '#6B7280' }}>
-                      {minutesDiff(block.startTime, block.endTime)} min
+                      {session.plannedMinutes} min
                     </td>
-                    <td style={{ padding: '12px 16px', fontWeight: 600, color: '#111' }}>
-                      {block.label}
+                    <td style={{ padding: '12px 16px', fontWeight: 600, color: '#111', textDecoration: session.status === 'done' ? 'line-through' : 'none' }}>
+                      {session.blockLabel}
                     </td>
                     <td style={{ padding: '12px 16px' }}>
-                      <div className={`pill pill-${block.category === 'upsc' ? 'green' : block.category === 'academic' ? 'amber' : block.category === 'content' ? 'purple' : 'blue'}`} style={{ fontSize: 10, display: 'inline-flex' }}>
-                        {block.category}
+                      <div className={`pill pill-${session.category === 'upsc' ? 'green' : session.category === 'academic' ? 'amber' : session.category === 'content' ? 'purple' : 'blue'}`} style={{ fontSize: 10, display: 'inline-flex' }}>
+                        {session.category}
                       </div>
                     </td>
                   </tr>
